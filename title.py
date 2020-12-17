@@ -39,6 +39,7 @@ class MyPanel(wx.Panel):
 
         self.SetSizer(self.panel_box)
 
+
 class MainPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
