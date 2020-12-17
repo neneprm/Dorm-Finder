@@ -1,8 +1,9 @@
 from app_template import *
+import wx.lib.buttons as buttons
 import sys
 
 
-class Homepage(wx.App):
+class Admin(wx.App):
     def __init__(self):
         super().__init__()
         self.frame = MyFrame(parent=None, title='RENT-A-DORM', size=(1080, 720))
@@ -22,6 +23,8 @@ class MyFrame(wx.Frame):
 class MyPanel(Template):
     def __init__(self, parent):
         super().__init__(parent=parent)
+        self.SetBackgroundColour('light blue')
+        self.title_panel.SetBackgroundColour('sky blue')
 
         self.data_panel = DataPanel(parent=self)
         self.detailadd_panel = DetailAdd(parent=self)
@@ -32,8 +35,6 @@ class MyPanel(Template):
         self.vpanel_box.Add(self.data_panel)
         self.vpanel_box.Add(self.hpanel_box)
         self.hpanel_box.Add(self.detailadd_panel)
-
-        # self.hpanel_box.AddSpacer(60)
 
         # self.detailadd_panel.show_info()
         self.detailadd_panel.add_info()
@@ -89,7 +90,6 @@ class DataPanel(wx.Panel):
         self.list.SetFont(self.list_font)
         self.list.AlwaysShowScrollbars(hflag=False, vflag=True)
 
-        #   Data
         for i in self.area_list:
             self.area_index = self.list.InsertItem(sys.maxsize, i[0])
             self.list.SetItem(self.area_index, 1, i[1])
@@ -130,7 +130,8 @@ class DetailAdd(wx.Panel):
         # Info
         self.col1_sizer.AddSpacer(40)
 
-        info = wx.StaticText(self, label='Name\n\nArea\n\nYear of Contruction\n\nSize (sq.m.)\n\nNo. of Room\n\nNo. of Floor\n\nPrice (Baht/month)\n\nStatus\n\nContact', style=wx.ALIGN_RIGHT)
+        info = wx.StaticText(self, label='Name\n\nArea\n\nYear of Contruction\n\nSize (sq.m.)\n\nNo. of Room\n\nNo. '
+                                         'of Floor\n\nPrice (Baht/month)\n\nStatus\n\nContact', style=wx.ALIGN_RIGHT)
         info.SetFont(info_font)
         self.col1_sizer.Add(info, wx.ALL)
         self.col1_sizer.AddSpacer(15)
@@ -222,7 +223,8 @@ class DetailAdd(wx.Panel):
         self.col1_sizer.AddSpacer(40)
 
         info = wx.StaticText(self,
-                             label='Name\n\nArea\n\nYear of Contruction\n\nSize (sq.m.)\n\nNo. of Room\n\nNo. of Floor\n\nPrice (Baht/month)\n\nStatus\n\nContact',
+                             label='Name\n\nArea\n\nYear of Contruction\n\nSize (sq.m.)\n\nNo. of Room\n\nNo. of '
+                                   'Floor\n\nPrice (Baht/month)\n\nStatus\n\nContact',
                              style=wx.ALIGN_RIGHT)
         info.SetFont(info_font)
         self.col1_sizer.Add(info, wx.ALL)
@@ -287,8 +289,34 @@ class DetailAdd(wx.Panel):
 
         # Pic
         self.col1_sizer.AddSpacer(30)
-        insert_pic = wx.StaticText(self, label='insert pic', style=wx.ALIGN_CENTER)
-        self.col1_sizer.Add(insert_pic)
+        pic_panel = wx.Panel(parent=self)
+        pic_sizer = wx.BoxSizer(wx.VERTICAL)
+
+
+        # insert picture over hereeeeeeeeeee
+        # test test test hellowwwww
+        # back_icon2 = wx.Bitmap("icons/back.png")
+        # back_button2 = buttons.GenBitmapButton(self, bitmap=back_icon2,
+        #                                       size=(back_icon2.GetWidth(), back_icon2.GetHeight()))
+        # pic_sizer.Add(back_button2)
+
+
+        # Back and Next Button
+        pic_button_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        pic_button_sizer.AddSpacer(150)
+
+        back_icon = wx.Bitmap("icons/back.png")
+        back_button = buttons.GenBitmapButton(self, bitmap=back_icon, size=(back_icon.GetWidth(), back_icon.GetHeight()))
+
+        next_icon = wx.Bitmap("icons/next.png")
+        next_button = buttons.GenBitmapButton(self, bitmap=next_icon, size=(next_icon.GetWidth(), back_icon.GetHeight()))
+
+        pic_button_sizer.Add(back_button)
+        pic_button_sizer.AddSpacer(200)
+        pic_button_sizer.Add(next_button)
+        pic_sizer.Add(pic_button_sizer)
+
+        self.col1_sizer.Add(pic_sizer)
 
         # Initialize
         self.vsizer.Add(self.col1_sizer)
@@ -297,5 +325,5 @@ class DetailAdd(wx.Panel):
 
 
 if __name__ == "__main__":
-    homepage = Homepage()
-    homepage.MainLoop()
+    admin = Admin()
+    admin.MainLoop()

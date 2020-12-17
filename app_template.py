@@ -21,7 +21,6 @@ import wx
 class Template(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.SetBackgroundColour('light blue')
 
         self.title_panel = TitlePanel(parent=self)
 
@@ -34,7 +33,6 @@ class Template(wx.Panel):
 class TitlePanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.SetBackgroundColour('sky blue')
         self.title_font = wx.Font(32, wx.MODERN, wx.BOLD, wx.NORMAL)
 
         self.title_sizer = wx.BoxSizer(wx.VERTICAL)
