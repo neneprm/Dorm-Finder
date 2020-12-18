@@ -1,4 +1,6 @@
 import wx
+import admin
+import user
 
 
 class Title(wx.App):
@@ -60,64 +62,45 @@ class MainPanel(wx.Panel):
         self.vsizer.Add(self.title, 0, wx.ALL | wx.EXPAND)
         self.vsizer.AddSpacer(10)
 
-        # Username
-        self.user_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.user_sizer.AddSpacer(350)
-        self.user = wx.StaticText(self, label='Username  :')
-        self.user.SetFont(self.text_font)
-        self.user_sizer.Add(self.user, 0, wx.ALL)
-        self.user_sizer.AddSpacer(11)
-
-        self.user_input = wx.TextCtrl(self, size=(200, 33))
-        self.user_input.SetFont(self.input_font)
-        self.user_input.SetMaxLength(10)
-        self.user_sizer.Add(self.user_input, 0, wx.ALL)
-        self.vsizer.Add(self.user_sizer, 0, wx.ALL)
-        self.vsizer.AddSpacer(10)
-
-        # Password
-        self.pw_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.pw_sizer.AddSpacer(350)
-        self.pw = wx.StaticText(self, label='Password   :')
-        self.pw.SetFont(self.text_font)
-        self.pw_sizer.Add(self.pw, 0, wx.ALL)
-        self.pw_sizer.AddSpacer(10)
-
-        self.pw_input = wx.TextCtrl(self, size=(200, 33), style=wx.TE_PASSWORD)
-        self.pw_input.SetFont(self.input_font)
-        self.pw_input.SetMaxLength(10)
-        self.pw_sizer.Add(self.pw_input, 0, wx.ALL)
-        self.vsizer.Add(self.pw_sizer, 0, wx.ALL)
-        self.vsizer.AddSpacer(10)
-
-        # Create Acc button
         self.button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.button_sizer.AddSpacer(50)
-        self.create_button = wx.Button(self, label="Create New Account", size=(235, 50))
-        self.button_sizer.Add(self.create_button, 0, wx.ALL)
-        self.button_sizer.AddSpacer(23)
-        # EVT
-        self.create_button.Bind(wx.EVT_BUTTON, self.createClicked)
+        self.button_sizer.AddSpacer(250)
 
-        # Log In button
-        self.logIn_button = wx.Button(self, label="Log In", size=(115, 50))
-        self.button_sizer.Add(self.logIn_button, 0, wx.ALL)
-        self.vsizer.Add(self.button_sizer, 0, wx.ALL | wx.ALIGN_CENTER)
+        # Admin
+        self.admin_button = wx.Button(self, label="Log In as Admin", size=(235, 50), style=wx.ALIGN_CENTER)
+        self.button_sizer.Add(self.admin_button, 0, wx.ALL)
+        self.button_sizer.AddSpacer(50)
         # EVT
-        self.logIn_button.Bind(wx.EVT_BUTTON, self.logInClicked)
+        self.admin_button.Bind(wx.EVT_BUTTON, self.adminClicked)
+
+        # Guest
+        self.guest_button = wx.Button(self, label="Log In as Guest", size=(235, 50), style=wx.ALIGN_CENTER)
+        self.button_sizer.Add(self.guest_button, 0, wx.ALL)
+        self.vsizer.AddSpacer(10)
+        # EVT
+        self.guest_button.Bind(wx.EVT_BUTTON, self.guestClicked)
+
+        self.vsizer.Add(self.button_sizer, 0, wx.ALL)
 
         # Initialize
-        self.vsizer.AddSpacer(115)
+        self.vsizer.AddSpacer(180)
         self.SetSizer(self.vsizer)
 
     # EVT Functions
-    def createClicked(self, event):
-        self.create_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.create_button)
+    def adminClicked(self, event):
+        frame = self.GetParent()
+        app = frame.GetParent()
+        app.Destroy()
+        wx.Exit()
+        admin_app = admin.Admin()
+        admin_app.MainLoop()
 
-    def logInClicked(self, event):
-        self.logIn_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.logIn_button)
+    def guestClicked(self, event):
+        frame = self.GetParent()
+        app = frame.GetParent()
+        app.Destroy()
+        wx.Exit()
+        guest_app = user.User()
+        guest_app.MainLoop()
 
 
 if __name__ == '__main__':

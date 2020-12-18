@@ -59,14 +59,7 @@ class DataPanel(wx.Panel):
 
         self.top_sizer.Add(area_text, 0, wx.ALL)
         self.top_sizer.Add(self.area_choice, 0, wx.ALL)
-        self.top_sizer.AddSpacer(225)
-
-        # Fav button
-        self.fav_button = wx.Button(self, label='Fav', size=(100, 33))
-        self.top_sizer.Add(self.fav_button, 0, wx.ALL)
-        self.top_sizer.AddSpacer(50)
-        # EVT
-        self.fav_button.Bind(wx.EVT_BUTTON, self.favClicked)
+        self.top_sizer.AddSpacer(375)
 
         # Log Out button
         self.logOut_button = wx.Button(self, label='Log Out', size=(200, 33))
@@ -105,12 +98,9 @@ class DataPanel(wx.Panel):
         print(obj.GetString(item))
 
     def logOutClicked(self, event):
-        self.logOut_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.logOut_button)
-
-    def favClicked(self, event):
-        self.fav_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.fav_button)
+        app = self.GetParent().GetParent()
+        app.Destroy()
+        wx.Exit()
 
 
 if __name__ == "__main__":

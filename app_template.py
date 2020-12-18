@@ -173,7 +173,7 @@ class DormListPanel(wx.Panel):
         # Layout
         # Dorm Button
         self.hsizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.dorm_icon = wx.Bitmap('college_town/icon.jpg')
+        self.dorm_icon = wx.Bitmap('img/college_town/icon.jpg')
         self.dorm_button = buttons.GenBitmapButton(self, bitmap=self.dorm_icon,
                                                size=(self.dorm_icon.GetWidth(), self.dorm_icon.GetHeight()))
         self.hsizer.Add(self.dorm_button)

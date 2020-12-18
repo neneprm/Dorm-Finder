@@ -1,4 +1,5 @@
 from app_template import *
+import csv
 import sys
 
 
@@ -42,9 +43,14 @@ class MyPanel(Template):
 class DataPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.area_list = [('College Town', 'Ladkrabang'), ('Keystone', 'Rangsit'),
-                          ('CU iHouse', 'Phaya Thai'), ('JPark Thammasat', 'Rangsit'), ('The Home', 'Ladkrabang'),
-                          ('The Enter', 'Salaya'), ('U Center', 'Phayathai'), ('Pool Villa', 'Ladkrabang')]
+
+        self.area_list = []
+        with open('assets/dorm.csv', newline='') as f:
+            reader = csv.reader(f)
+            dormList = reader
+            for row in dormList:
+                self.area_list.append(row)
+
 
         # Color, Font, and Style
         self.SetBackgroundColour('#aee7e8')
@@ -93,6 +99,7 @@ class DataPanel(wx.Panel):
         for i in self.area_list:
             self.area_index = self.list.InsertItem(sys.maxsize, i[0])
             self.list.SetItem(self.area_index, 1, i[1])
+            self.list.SetItem(self.area_index, 2, i[4])
 
         self.list.Bind(wx.EVT_LIST_ITEM_SELECTED, self.listSelected)
 
@@ -114,8 +121,9 @@ class DataPanel(wx.Panel):
         print("Label of pressed button = ", self.detail_button)
 
     def logOutClicked(self, event):
-        self.logOut_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.logOut_button)
+        app = self.GetParent().GetParent()
+        app.Destroy()
+        wx.Exit()
 
     def listSelected(self, event):
         obj = event.GetEventObject()
