@@ -21,7 +21,7 @@ class MyFrame(wx.Frame):
 class MyPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.SetBackgroundColour('sky blue')
+        self.SetBackgroundColour('#ff8364')
 
         self.main_panel = MainPanel(parent=self)
 
@@ -44,13 +44,13 @@ class MainPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
 
-    # Color, Font, and Style
-        self.SetBackgroundColour('light blue')
+        # Color, Font, and Style
+        self.SetBackgroundColour('#ffd98e')
         self.title_font = wx.Font(110, wx.MODERN, wx.BOLD, wx.NORMAL)
         self.text_font = wx.Font(28, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.input_font = wx.Font(22, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
 
-    # Layout
+        # Layout
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
         self.vsizer.AddSpacer(195)
 
@@ -92,23 +92,25 @@ class MainPanel(wx.Panel):
 
         # Create Acc button
         self.button_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.button_sizer.AddSpacer(50)
         self.create_button = wx.Button(self, label="Create New Account", size=(235, 50))
         self.button_sizer.Add(self.create_button, 0, wx.ALL)
         self.button_sizer.AddSpacer(23)
-
+        # EVT
         self.create_button.Bind(wx.EVT_BUTTON, self.createClicked)
 
         # Log In button
         self.logIn_button = wx.Button(self, label="Log In", size=(115, 50))
         self.button_sizer.Add(self.logIn_button, 0, wx.ALL)
         self.vsizer.Add(self.button_sizer, 0, wx.ALL | wx.ALIGN_CENTER)
-
+        # EVT
         self.logIn_button.Bind(wx.EVT_BUTTON, self.logInClicked)
 
         # Initialize
         self.vsizer.AddSpacer(115)
         self.SetSizer(self.vsizer)
 
+    # EVT Functions
     def createClicked(self, event):
         self.create_button = event.GetEventObject().GetLabel()
         print("Label of pressed button = ", self.create_button)

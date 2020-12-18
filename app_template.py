@@ -130,16 +130,20 @@ class Info(wx.Panel):
         pic_button_sizer.AddSpacer(150)
 
         back_icon = wx.Bitmap('icons/back.png')
-        back_button = buttons.GenBitmapButton(self, bitmap=back_icon,
+        self.back_button = buttons.GenBitmapButton(self, bitmap=back_icon,
                                               size=(back_icon.GetWidth(), back_icon.GetHeight()))
+        # EVT
+        self.back_button.Bind(wx.EVT_BUTTON, self.backClicked)
 
         next_icon = wx.Bitmap('icons/next.png')
-        next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
+        self.next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
                                               size=(next_icon.GetWidth(), back_icon.GetHeight()))
+        # EVT
+        self.next_button.Bind(wx.EVT_BUTTON, self.nextClicked)
 
-        pic_button_sizer.Add(back_button)
+        pic_button_sizer.Add(self.back_button)
         pic_button_sizer.AddSpacer(200)
-        pic_button_sizer.Add(next_button)
+        pic_button_sizer.Add(self.next_button)
         pic_sizer.Add(pic_button_sizer)
 
         self.col1_sizer.Add(pic_sizer)
@@ -149,21 +153,35 @@ class Info(wx.Panel):
         self.vsizer.AddSpacer(30)
         self.SetSizer(self.vsizer)
 
+    def backClicked(self, event):
+        self.back_button = event.GetEventObject()
+        print("Label of pressed button = ", self.back_button)
+
+    def nextClicked(self, event):
+        self.next_button = event.GetEventObject()
+        print("Label of pressed button = ", self.next_button)
+
 
 class DormListPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
         self.SetBackgroundColour('#ea86b6')
+        # Color, Font, and Style
         name_font = wx.Font(20, wx.MODERN, wx.BOLD, wx.NORMAL)
         detail_font = wx.Font(14, wx.DEFAULT, wx.BOLD, wx.NORMAL)
 
+        # Layout
+        # Dorm Button
         self.hsizer = wx.BoxSizer(wx.HORIZONTAL)
         self.dorm_icon = wx.Bitmap('college_town/icon.jpg')
         self.dorm_button = buttons.GenBitmapButton(self, bitmap=self.dorm_icon,
                                                size=(self.dorm_icon.GetWidth(), self.dorm_icon.GetHeight()))
         self.hsizer.Add(self.dorm_button)
         self.hsizer.AddSpacer(100)
+        # EVT
+        self.dorm_button.Bind(wx.EVT_BUTTON, self.dormClicked)
 
+        # Info
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
         self.vsizer.AddSpacer(20)
         self.name = wx.StaticText(self, label='College Town', style=wx.ALIGN_LEFT)
@@ -205,6 +223,11 @@ class DormListPanel(wx.Panel):
         self.hsizer.AddSpacer(100)
 
         self.SetSizer(self.hsizer)
+
+    # EVT Functions
+    def dormClicked(self, event):
+        self.dorm_button = event.GetEventObject()
+        print("Label of pressed button = ", self.dorm_button)
 
 
 if __name__ == "__main__":

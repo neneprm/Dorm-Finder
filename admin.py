@@ -1,5 +1,4 @@
 from app_template import *
-import wx.lib.buttons as buttons
 import sys
 
 
@@ -61,15 +60,21 @@ class DataPanel(wx.Panel):
         self.add_button = wx.Button(self, label="Add New Dorm", size=(200, 33))
         self.top_sizer.Add(self.add_button, wx.ALL)
         self.top_sizer.AddSpacer(40)
+        # EVT
+        self.add_button.Bind(wx.EVT_BUTTON, self.addClicked)
 
         # Detail button
         self.detail_button = wx.Button(self, label='More Details', size=(200, 33))
         self.top_sizer.Add(self.detail_button, wx.ALL)
         self.top_sizer.AddSpacer(40)
+        # EVT
+        self.detail_button.Bind(wx.EVT_BUTTON, self.detailClicked)
 
         # Log Out button
-        self.logout_button = wx.Button(self, label='Log Out', size=(200, 33))
-        self.top_sizer.Add(self.logout_button, wx.ALL)
+        self.logOut_button = wx.Button(self, label='Log Out', size=(200, 33))
+        self.top_sizer.Add(self.logOut_button, wx.ALL)
+        # EVT
+        self.logOut_button.Bind(wx.EVT_BUTTON, self.logOutClicked)
 
         self.vsizer.Add(self.top_sizer, wx.ALL)
         self.vsizer.AddSpacer(20)
@@ -89,6 +94,8 @@ class DataPanel(wx.Panel):
             self.area_index = self.list.InsertItem(sys.maxsize, i[0])
             self.list.SetItem(self.area_index, 1, i[1])
 
+        self.list.Bind(wx.EVT_LIST_ITEM_SELECTED, self.listSelected)
+
         self.list_sizer.Add(self.list, wx.EXPAND | wx.ALL)
         self.list_sizer.AddSpacer(60)
         self.vsizer.Add(self.list_sizer, 0, wx.EXPAND | wx.ALL)
@@ -96,6 +103,30 @@ class DataPanel(wx.Panel):
 
         # Initialize
         self.SetSizer(self.vsizer)
+
+    # EVT Functions
+    def addClicked(self, event):
+        self.add_button = event.GetEventObject().GetLabel()
+        print("Label of pressed button = ", self.add_button)
+
+    def detailClicked(self, event):
+        self.detail_button = event.GetEventObject().GetLabel()
+        print("Label of pressed button = ", self.detail_button)
+
+    def logOutClicked(self, event):
+        self.logOut_button = event.GetEventObject().GetLabel()
+        print("Label of pressed button = ", self.logOut_button)
+
+    def listSelected(self, event):
+        obj = event.GetEventObject()
+        item = obj.GetFirstSelected()
+
+        while item != -1:
+            name = obj.GetItem(item, 0)
+            area = obj.GetItem(item, 1)
+
+            print(name.Text + ', ' + area.Text)
+            item = obj.GetNextSelected(item)
 
 
 class DetailAdd(wx.Panel):
@@ -120,6 +151,12 @@ class DetailAdd(wx.Panel):
         add.button_sizer.AddSpacer(60)
         self.box_sizer.Add(add)
         self.SetSizer(self.box_sizer)
+        # EVT
+        save_button.Bind(wx.EVT_BUTTON, self.saveClicked)
+
+    def saveClicked(self, event):
+        save_button = event.GetEventObject().GetLabel()
+        print("Label of pressed button = ", save_button)
 
 
 if __name__ == "__main__":
