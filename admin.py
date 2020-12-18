@@ -23,8 +23,8 @@ class MyFrame(wx.Frame):
 class MyPanel(Template):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.SetBackgroundColour('light blue')
-        self.title_panel.SetBackgroundColour('sky blue')
+        self.SetBackgroundColour('#aee7e8')
+        self.title_panel.SetBackgroundColour('#248ea9')
 
         self.data_panel = DataPanel(parent=self)
         self.detailadd_panel = DetailAdd(parent=self)
@@ -36,46 +36,41 @@ class MyPanel(Template):
         self.vpanel_box.Add(self.hpanel_box)
         self.hpanel_box.Add(self.detailadd_panel)
 
-        # self.detailadd_panel.show_info()
-        self.detailadd_panel.add_info()
+        self.detailadd_panel.show_info()
+        # self.detailadd_panel.add_info()
 
 
 class DataPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
-
-        self.area = ['           ------- Select your Area -------', 'Ladkrabang', 'Rangsit', 'Phaya Thai']
         self.area_list = [('College Town', 'Ladkrabang'), ('Keystone', 'Rangsit'),
                           ('CU iHouse', 'Phaya Thai'), ('JPark Thammasat', 'Rangsit'), ('The Home', 'Ladkrabang'),
                           ('The Enter', 'Salaya'), ('U Center', 'Phayathai'), ('Pool Villa', 'Ladkrabang')]
 
         # Color, Font, and Style
-        self.SetBackgroundColour('light blue')
-        self.text_font = wx.Font(22, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
-        self.list_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.SetBackgroundColour('#aee7e8')
+        list_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
 
         # Layout
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
         self.vsizer.AddSpacer(20)
         self.top_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.top_sizer.AddSpacer(60)
-
-        # Select Area
-        self.area_text = wx.StaticText(self, label='Area:   ')
-        self.area_text.SetFont(self.text_font)
-        self.area_choice = wx.Choice(self, size=(300, 33), choices=self.area)
-
-        self.top_sizer.Add(self.area_text, 0, wx.ALL)
-        self.top_sizer.Add(self.area_choice, 0, wx.ALL)
-        self.top_sizer.AddSpacer(140)
+        self.top_sizer.AddSpacer(200)
 
         # Add button
         self.add_button = wx.Button(self, label="Add New Dorm", size=(200, 33))
-        self.top_sizer.Add(self.add_button, 0, wx.ALL)
+        self.top_sizer.Add(self.add_button, wx.ALL)
         self.top_sizer.AddSpacer(40)
 
+        # Detail button
         self.detail_button = wx.Button(self, label='More Details', size=(200, 33))
-        self.top_sizer.Add(self.detail_button, 0, wx.ALL)
+        self.top_sizer.Add(self.detail_button, wx.ALL)
+        self.top_sizer.AddSpacer(40)
+
+        # Log Out button
+        self.logout_button = wx.Button(self, label='Log Out', size=(200, 33))
+        self.top_sizer.Add(self.logout_button, wx.ALL)
+
         self.vsizer.Add(self.top_sizer, wx.ALL)
         self.vsizer.AddSpacer(20)
 
@@ -87,7 +82,7 @@ class DataPanel(wx.Panel):
         self.list.InsertColumn(1, 'Name', wx.LIST_FORMAT_LEFT, 400)
         self.list.InsertColumn(2, 'Area', wx.LIST_FORMAT_LEFT, 300)
         self.list.InsertColumn(3, 'Status', wx.LIST_FORMAT_CENTER, 250)
-        self.list.SetFont(self.list_font)
+        self.list.SetFont(list_font)
         self.list.AlwaysShowScrollbars(hflag=False, vflag=True)
 
         for i in self.area_list:
@@ -113,17 +108,14 @@ class DetailAdd(wx.Panel):
 
     def show_info(self):
         # Color, Font, and Style
-        self.SetBackgroundColour('pale green')
+        self.SetBackgroundColour('#dff0ea')
         info_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         input_font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.vsizer.AddSpacer(20)
 
         # Done button
         button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        button_sizer.AddSpacer(770)
-        done_button = wx.Button(self, label='Done', size=(130, 33))
-        button_sizer.Add(done_button)
-        button_sizer.AddSpacer(60)
+        button_sizer.AddSpacer(960)
         self.vsizer.Add(button_sizer)
         self.vsizer.AddSpacer(10)
 
@@ -195,8 +187,27 @@ class DetailAdd(wx.Panel):
 
         # Pic
         self.col1_sizer.AddSpacer(30)
-        insert_pic = wx.StaticText(self, label='insert pic', style=wx.ALIGN_CENTER)
-        self.col1_sizer.Add(insert_pic)
+        pic_panel = wx.Panel(parent=self)
+        pic_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        # Back and Next Button
+        pic_button_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        pic_button_sizer.AddSpacer(150)
+
+        back_icon = wx.Bitmap('icons/back.png')
+        back_button = buttons.GenBitmapButton(self, bitmap=back_icon,
+                                              size=(back_icon.GetWidth(), back_icon.GetHeight()))
+
+        next_icon = wx.Bitmap('icons/next.png')
+        next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
+                                              size=(next_icon.GetWidth(), back_icon.GetHeight()))
+
+        pic_button_sizer.Add(back_button)
+        pic_button_sizer.AddSpacer(200)
+        pic_button_sizer.Add(next_button)
+        pic_sizer.Add(pic_button_sizer)
+
+        self.col1_sizer.Add(pic_sizer)
 
         # Initialize
         self.vsizer.Add(self.col1_sizer)
@@ -205,7 +216,7 @@ class DetailAdd(wx.Panel):
 
     def add_info(self):
         # Color, Font, and Style
-        self.SetBackgroundColour('pale green')
+        self.SetBackgroundColour('#dff0ea')
         info_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         input_font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
         self.vsizer.AddSpacer(20)
@@ -292,7 +303,6 @@ class DetailAdd(wx.Panel):
         pic_panel = wx.Panel(parent=self)
         pic_sizer = wx.BoxSizer(wx.VERTICAL)
 
-
         # insert picture over hereeeeeeeeeee
         # test test test hellowwwww
         # back_icon2 = wx.Bitmap("icons/back.png")
@@ -300,16 +310,17 @@ class DetailAdd(wx.Panel):
         #                                       size=(back_icon2.GetWidth(), back_icon2.GetHeight()))
         # pic_sizer.Add(back_button2)
 
-
         # Back and Next Button
         pic_button_sizer = wx.BoxSizer(wx.HORIZONTAL)
         pic_button_sizer.AddSpacer(150)
 
-        back_icon = wx.Bitmap("icons/back.png")
-        back_button = buttons.GenBitmapButton(self, bitmap=back_icon, size=(back_icon.GetWidth(), back_icon.GetHeight()))
+        back_icon = wx.Bitmap('icons/back.png')
+        back_button = buttons.GenBitmapButton(self, bitmap=back_icon,
+                                              size=(back_icon.GetWidth(), back_icon.GetHeight()))
 
-        next_icon = wx.Bitmap("icons/next.png")
-        next_button = buttons.GenBitmapButton(self, bitmap=next_icon, size=(next_icon.GetWidth(), back_icon.GetHeight()))
+        next_icon = wx.Bitmap('icons/next.png')
+        next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
+                                              size=(next_icon.GetWidth(), back_icon.GetHeight()))
 
         pic_button_sizer.Add(back_button)
         pic_button_sizer.AddSpacer(200)

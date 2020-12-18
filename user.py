@@ -1,4 +1,5 @@
 from app_template import *
+import wx.lib.scrolledpanel
 
 
 class User(wx.App):
@@ -21,8 +22,8 @@ class MyFrame(wx.Frame):
 class MyPanel(Template):
     def __init__(self, parent):
         super().__init__(parent=parent)
-        self.SetBackgroundColour('pink')
-        self.title_panel.SetBackgroundColour('blue violet')
+        self.SetBackgroundColour('#f3bad6')
+        self.title_panel.SetBackgroundColour('#e05297')
 
         self.data_panel = DataPanel(parent=self)
 
@@ -37,11 +38,59 @@ class DataPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
 
-        # Color, Font, and Style
-        self.SetBackgroundColour('sky blue')
-        self.text_font = wx.Font(22, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
-        self.list_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.area = ['           ------- Select your Area -------', 'Ladkrabang', 'Rangsit', 'Phaya Thai']
 
+        # Color, Font, and Style
+        self.SetBackgroundColour('#f3bad6')
+        text_font = wx.Font(22, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+
+        # Layout
+        self.vsizer = wx.BoxSizer(wx.VERTICAL)
+        self.vsizer.AddSpacer(20)
+        self.top_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.top_sizer.AddSpacer(60)
+
+        # Select Area
+        area_text = wx.StaticText(self, label='Area:   ')
+        area_text.SetFont(text_font)
+        self.area_choice = wx.Choice(self, size=(300, 33), choices=self.area)
+
+        self.top_sizer.Add(area_text, 0, wx.ALL)
+        self.top_sizer.Add(self.area_choice, 0, wx.ALL)
+        self.top_sizer.AddSpacer(225)
+
+        # Fav button
+        self.fav_button = wx.Button(self, label='Fav', size=(100, 33))
+        self.top_sizer.Add(self.fav_button, 0, wx.ALL)
+        self.top_sizer.AddSpacer(50)
+
+        # Log Out button
+        self.logout_button = wx.Button(self, label='Log Out', size=(200, 33))
+        self.top_sizer.Add(self.logout_button, wx.ALL)
+        self.vsizer.Add(self.top_sizer)
+        self.vsizer.AddSpacer(30)
+
+        # Dorm List scrolled panel
+        self.hsizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.hsizer.AddSpacer(60)
+
+        scroll_panel = wx.lib.scrolledpanel.ScrolledPanel(self, size=(955, 500), style=wx.SIMPLE_BORDER)
+        scroll_panel.SetupScrolling()
+        scroll_panel.SetBackgroundColour('#fceef5')
+
+        scroll_vsizer = wx.BoxSizer(wx.VERTICAL)
+        scroll_vsizer.AddSpacer(20)
+
+        for i in range(10):
+            dorm_list = DormListPanel(scroll_panel)
+            scroll_vsizer.Add(dorm_list, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+
+        scroll_panel.SetSizer(scroll_vsizer)
+        self.hsizer.Add(scroll_panel)
+
+        # Initialize
+        self.vsizer.Add(self.hsizer)
+        self.SetSizer(self.vsizer)
 
 
 if __name__ == "__main__":
