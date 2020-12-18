@@ -30,6 +30,126 @@ class TitlePanel(wx.Panel):
         self.SetSizer(self.title_sizer)
 
 
+class Info(wx.Panel):
+    def __init__(self, parent):
+        super().__init__(parent=parent)
+        self.box_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.vsizer = wx.BoxSizer(wx.VERTICAL)
+        self.col1_sizer = wx.BoxSizer(wx.HORIZONTAL)
+
+        info_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        input_font = wx.Font(12, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+        self.vsizer.AddSpacer(20)
+
+        # Button
+        self.button_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        self.button_sizer.AddSpacer(770)
+        self.vsizer.Add(self.button_sizer)
+        self.vsizer.AddSpacer(10)
+
+        # Info
+        self.col1_sizer.AddSpacer(40)
+
+        info = wx.StaticText(self, label='Name\n\nArea\n\nYear of Contruction\n\nSize (sq.m.)\n\nNo. of Room\n\nNo. '
+                                         'of Floor\n\nPrice (Baht/month)\n\nStatus\n\nContact', style=wx.ALIGN_RIGHT)
+        info.SetFont(info_font)
+        self.col1_sizer.Add(info, wx.ALL)
+        self.col1_sizer.AddSpacer(15)
+
+        col2_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        # def info_txtctrl(info_name, width):
+        #     info_name = wx.TextCtrl(self, size=(width, 22))
+        #     info_name.SetFont(input_font)
+        #     col2_sizer.Add(info_name, wx.ALL)
+        #     col2_sizer.AddSpacer(12)
+        #
+        # info_txtctrl(name, 180)
+
+        name = wx.TextCtrl(self, size=(180, 22))
+        name.SetFont(input_font)
+        # name.SetEditable(False)
+        col2_sizer.Add(name, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        area = wx.TextCtrl(self, size=(180, 22))
+        area.SetFont(input_font)
+        col2_sizer.Add(area, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        year = wx.TextCtrl(self, size=(70, 22))
+        year.SetFont(input_font)
+        col2_sizer.Add(year, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        size = wx.TextCtrl(self, size=(70, 22))
+        size.SetFont(input_font)
+        col2_sizer.Add(size, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        room = wx.TextCtrl(self, size=(70, 22))
+        room.SetFont(input_font)
+        col2_sizer.Add(room, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        floor = wx.TextCtrl(self, size=(70, 22))
+        floor.SetFont(input_font)
+        col2_sizer.Add(floor, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        price = wx.TextCtrl(self, size=(70, 22))
+        price.SetFont(input_font)
+        col2_sizer.Add(price, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        status = wx.TextCtrl(self, size=(125, 22))
+        status.SetFont(input_font)
+        col2_sizer.Add(status, wx.ALL)
+        col2_sizer.AddSpacer(14)
+
+        contact = wx.TextCtrl(self, size=(125, 22))
+        contact.SetFont(input_font)
+        col2_sizer.Add(contact, wx.ALL)
+
+        self.col1_sizer.Add(col2_sizer)
+
+        # Pic
+        self.col1_sizer.AddSpacer(30)
+
+        pic_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        # insert picture over hereeeeeeeeeee
+        # test test test hellowwwww
+        # back_icon2 = wx.Bitmap("icons/back.png")
+        # back_button2 = buttons.GenBitmapButton(self, bitmap=back_icon2,
+        #                                       size=(back_icon2.GetWidth(), back_icon2.GetHeight()))
+        # pic_sizer.Add(back_button2)
+
+        # Back and Next Button
+        pic_button_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        pic_button_sizer.AddSpacer(150)
+
+        back_icon = wx.Bitmap('icons/back.png')
+        back_button = buttons.GenBitmapButton(self, bitmap=back_icon,
+                                              size=(back_icon.GetWidth(), back_icon.GetHeight()))
+
+        next_icon = wx.Bitmap('icons/next.png')
+        next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
+                                              size=(next_icon.GetWidth(), back_icon.GetHeight()))
+
+        pic_button_sizer.Add(back_button)
+        pic_button_sizer.AddSpacer(200)
+        pic_button_sizer.Add(next_button)
+        pic_sizer.Add(pic_button_sizer)
+
+        self.col1_sizer.Add(pic_sizer)
+
+        # Initialize
+        self.vsizer.Add(self.col1_sizer)
+        self.vsizer.AddSpacer(30)
+        self.SetSizer(self.vsizer)
+
+
 class DormListPanel(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
