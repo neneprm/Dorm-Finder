@@ -27,20 +27,21 @@ class MyPanel(Template):
         self.title_panel.SetBackgroundColour('#248ea9')
 
         self.data_panel = DataPanel(parent=self)
-        self.detailadd_panel = DetailAdd(parent=self)
+        # self.detailadd_panel = DetailAdd(parent=self)
 
-        self.hpanel_box = wx.BoxSizer(wx.HORIZONTAL)
-        self.hpanel_box.AddSpacer(60)
+        # self.hpanel_box = wx.BoxSizer(wx.HORIZONTAL)
+        # self.hpanel_box.AddSpacer(60)
 
         self.vpanel_box.Add(self.data_panel)
-        self.vpanel_box.Add(self.hpanel_box)
-        self.hpanel_box.Add(self.detailadd_panel)
+        # self.vpanel_box.Add(self.hpanel_box)
+        # self.hpanel_box.Add(self.detailadd_panel)
 
         # self.detailadd_panel.show_info()
-        self.detailadd_panel.add_info()
+        # self.detailadd_panel.add_info()
 
 
 class DataPanel(wx.Panel):
+
     def __init__(self, parent):
         super().__init__(parent=parent)
 
@@ -51,30 +52,15 @@ class DataPanel(wx.Panel):
             for row in dormList:
                 self.area_list.append(row)
 
-
         # Color, Font, and Style
         self.SetBackgroundColour('#aee7e8')
         list_font = wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
 
         # Layout
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
-        self.vsizer.AddSpacer(20)
+        self.vsizer.AddSpacer(30)
         self.top_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.top_sizer.AddSpacer(200)
-
-        # Add button
-        self.add_button = wx.Button(self, label="Add New Dorm", size=(200, 33))
-        self.top_sizer.Add(self.add_button, wx.ALL)
-        self.top_sizer.AddSpacer(40)
-        # EVT
-        self.add_button.Bind(wx.EVT_BUTTON, self.addClicked)
-
-        # Detail button
-        self.detail_button = wx.Button(self, label='More Details', size=(200, 33))
-        self.top_sizer.Add(self.detail_button, wx.ALL)
-        self.top_sizer.AddSpacer(40)
-        # EVT
-        self.detail_button.Bind(wx.EVT_BUTTON, self.detailClicked)
+        self.top_sizer.AddSpacer(820)
 
         # Log Out button
         self.logOut_button = wx.Button(self, label='Log Out', size=(200, 33))
@@ -82,14 +68,14 @@ class DataPanel(wx.Panel):
         # EVT
         self.logOut_button.Bind(wx.EVT_BUTTON, self.logOutClicked)
 
-        self.vsizer.Add(self.top_sizer, wx.ALL)
-        self.vsizer.AddSpacer(20)
+        self.vsizer.Add(self.top_sizer, 0, wx.ALL)
+        self.vsizer.AddSpacer(30)
 
         # Dorm list
         #   Layout
         self.list_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.list_sizer.AddSpacer(60)
-        self.list = wx.ListCtrl(self, -1, size=(960, 100), style=wx.LC_REPORT)
+        self.list = wx.ListCtrl(self, -1, size=(960, 140), style=wx.LC_REPORT)
         self.list.InsertColumn(1, 'Name', wx.LIST_FORMAT_LEFT, 400)
         self.list.InsertColumn(2, 'Area', wx.LIST_FORMAT_LEFT, 300)
         self.list.InsertColumn(3, 'Status', wx.LIST_FORMAT_CENTER, 250)
@@ -106,19 +92,28 @@ class DataPanel(wx.Panel):
         self.list_sizer.Add(self.list, wx.EXPAND | wx.ALL)
         self.list_sizer.AddSpacer(60)
         self.vsizer.Add(self.list_sizer, 0, wx.EXPAND | wx.ALL)
-        self.vsizer.AddSpacer(20)
+        self.vsizer.AddSpacer(110)
+
+        self.detailadd_panel = DetailAdd(parent=parent)
+
+        self.hpanel_box = wx.BoxSizer(wx.HORIZONTAL)
+        self.hpanel_box.AddSpacer(60)
+        self.hpanel_box.Add(self.detailadd_panel)
+
+        self.vsizer.Add(self.hpanel_box)
+
+        # self.detailadd_panel.show_info()
+        self.detailadd_panel.add_info()
 
         # Initialize
         self.SetSizer(self.vsizer)
 
     # EVT Functions
     def addClicked(self, event):
-        self.add_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.add_button)
+        self.detailadd_panel.add_info()
 
     def detailClicked(self, event):
-        self.detail_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", self.detail_button)
+        self.detailadd_panel.show_info()
 
     def logOutClicked(self, event):
         app = self.GetParent().GetParent()
@@ -146,7 +141,7 @@ class DetailAdd(wx.Panel):
         # Color, Font, and Style
         self.SetBackgroundColour('#dff0ea')
         show = Info(self)
-        show.button_sizer.AddSpacer(190)
+        # show.button_sizer.AddSpacer(190)
         self.box_sizer.Add(show)
         self.SetSizer(self.box_sizer)
 
@@ -154,17 +149,33 @@ class DetailAdd(wx.Panel):
         # Color, Font, and Style
         self.SetBackgroundColour('#dff0ea')
         add = Info(self)
-        save_button = wx.Button(self, label='Save', size=(130, 33))
-        add.button_sizer.Add(save_button)
+        add_button = wx.Button(self, label='Add', size=(130, 33))
+        add.button_sizer.Add(add_button)
         add.button_sizer.AddSpacer(60)
+        # EVT
+        add_button.Bind(wx.EVT_BUTTON, self.addClicked)
+
+        add_pic_button = wx.Button(self, label='Add Image Here', size=(200, 33))
+        add.pic_button_sizer.Add(add_pic_button, wx.ALL)
+        add_pic_button.Bind(wx.EVT_BUTTON, self.add_picClicked)
+
         self.box_sizer.Add(add)
         self.SetSizer(self.box_sizer)
-        # EVT
-        save_button.Bind(wx.EVT_BUTTON, self.saveClicked)
 
-    def saveClicked(self, event):
-        save_button = event.GetEventObject().GetLabel()
-        print("Label of pressed button = ", save_button)
+    def addClicked(self, event):
+        add_button = event.GetEventObject().GetLabel()
+        print("Label of pressed button = ", add_button)
+
+    def add_picClicked(self, event):
+        with wx.FileDialog(self, 'Add Image', style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT) as fileDialog:
+            if fileDialog.ShowModal() == wx.ID_CANCEL:
+                return
+        pathname = fileDialog.GetPath()
+        try:
+            with open(pathname, 'w') as file:
+                file.write(pathname + '.jpg')
+        except IOError:
+            wx.LogError("Cannot save image in file '%s' " % pathname)
 
 
 if __name__ == "__main__":

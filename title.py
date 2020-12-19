@@ -31,14 +31,6 @@ class MyPanel(wx.Panel):
         self.panel_box.AddSpacer(35)
         self.panel_box.Add(self.main_panel, 0, wx.EXPAND | wx.ALL, 30)
 
-        # self.panel_box.Add(self.data_panel, 0, wx.EXPAND | wx.ALL)
-
-        # self.detail_box = wx.BoxSizer(wx.HORIZONTAL)
-        # self.detail_box.AddSpacer(60)
-        # self.detail_box.Add(self.detail_panel, wx.EXPAND | wx.ALL)
-        # self.detail_box.AddSpacer(60)
-        # self.panel_box.Add(self.detail_box, wx.EXPAND | wx.ALL)
-
         self.SetSizer(self.panel_box)
 
 
