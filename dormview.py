@@ -1,4 +1,5 @@
 from app_template import *
+import glob
 
 
 class DormView(wx.App):
@@ -6,7 +7,7 @@ class DormView(wx.App):
         super().__init__()
         dorminfo = info
 
-        self.frame = MyFrame(parent=None, title='RENT-A-DORM', size=(900, 300), info=dorminfo)
+        self.frame = MyFrame(parent=None, title='RENT-A-DORM', size=(1200, 650), info=dorminfo)
         self.frame.Center()
         self.frame.Show()
 
@@ -25,13 +26,36 @@ class MyPanel(Info):
         super().__init__(parent=parent)
         self.SetBackgroundColour('#f3bad6')
 
+        detail = self.GetParent()
+        self.index = 0
+        # Dorm pics
+        # print(detail.info)
+        name = detail.info[0]
+        name = name.lower().replace(' ', '_')
+        # print(name)
+        self.pic_path = tuple(glob.glob('img/' + name + '/*[0-9].jpg')) # list of picture's directory
+        # print(pic_path)
+
+        self.img = wx.Image(self.pic_path[self.index], wx.BITMAP_TYPE_ANY).ConvertToBitmap()
+        self.bmp = wx.StaticBitmap(self, -1, self.img, (self.img.GetWidth(), self.img.GetHeight()))
+
+        self.pic_sizer.Add(self.bmp)
+
+        # Back and Next buttons
         back_icon = wx.Bitmap('icons/back.png')
         back_button = buttons.GenBitmapButton(self, bitmap=back_icon,
                                                    size=(back_icon.GetWidth(), back_icon.GetHeight()))
+        next_icon = wx.Bitmap('icons/next.png')
+        next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
+                                              size=(next_icon.GetWidth(), back_icon.GetHeight()))
+        self.pic_button_sizer.Add(back_button)
+        self.pic_button_sizer.AddSpacer(10)
+        self.pic_button_sizer.Add(next_button)
 
-        # Dorm detail
-        detail = self.GetParent()
-        print(detail.info)
+        self.pic_sizer.Add(self.pic_button_sizer)
+
+        # Display information
+        # print(detail.info)
         self.name.WriteText(detail.info[0])
         self.area.WriteText(detail.info[1])
         self.size.WriteText(detail.info[2])
@@ -48,22 +72,17 @@ class MyPanel(Info):
 
         # EVT
         back_button.Bind(wx.EVT_BUTTON, self.backClicked)
-        next_icon = wx.Bitmap('icons/next.png')
-        next_button = buttons.GenBitmapButton(self, bitmap=next_icon,
-                                                   size=(next_icon.GetWidth(), back_icon.GetHeight()))
-        # EVT
         next_button.Bind(wx.EVT_BUTTON, self.nextClicked)
-        self.pic_button_sizer.Add(back_button)
-        self.pic_button_sizer.AddSpacer(200)
-        self.pic_button_sizer.Add(next_button)
 
     def backClicked(self, event):
-        back_button = event.GetEventObject()
-        print("Label of pressed button = ", back_button)
+        self.img = wx.Image(self.pic_path[(self.index - 1) % len(self.pic_path)], wx.BITMAP_TYPE_ANY).ConvertToBitmap()
+        self.bmp.SetBitmap(self.img)
+        self.index -= 1
 
     def nextClicked(self, event):
-        next_button = event.GetEventObject()
-        print("Label of pressed button = ", next_button)
+        self.img = wx.Image(self.pic_path[(self.index + 1) % len(self.pic_path)], wx.BITMAP_TYPE_ANY).ConvertToBitmap()
+        self.bmp.SetBitmap(self.img)
+        self.index += 1
 
 
 if __name__ == "__main__":

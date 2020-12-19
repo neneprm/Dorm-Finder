@@ -57,14 +57,6 @@ class Info(wx.Panel):
 
         col2_sizer = wx.BoxSizer(wx.VERTICAL)
 
-        # def info_txtctrl(info_name, width):
-        #     info_name = wx.TextCtrl(self, size=(width, 22))
-        #     info_name.SetFont(input_font)
-        #     col2_sizer.Add(info_name, wx.ALL)
-        #     col2_sizer.AddSpacer(12)
-        #
-        # info_txtctrl(name, 180)
-
         self.name = wx.TextCtrl(self, size=(180, 22))
         self.name.SetFont(input_font)
         # name.SetEditable(False)
@@ -111,9 +103,9 @@ class Info(wx.Panel):
 
         # Back and Next Button
         self.pic_button_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self.pic_button_sizer.AddSpacer(150)
+        self.pic_button_sizer.AddSpacer(350)
 
-        self.pic_sizer.Add(self.pic_button_sizer)
+        # self.pic_sizer.Add(self.pic_button_sizer)
         self.col1_sizer.Add(self.pic_sizer)
 
         # Initialize

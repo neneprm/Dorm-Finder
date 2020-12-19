@@ -5,15 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49947414-93ff-4f88-956b-37b738d520bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dormListPanel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_template.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/dorm-list.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/dorm-list.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/dorm.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/dorm.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dormview.py" beforeDir="false" afterPath="$PROJECT_DIR$/dormview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/college_town/college_town_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/title.py" beforeDir="false" afterPath="$PROJECT_DIR$/title.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/college_town/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/college_town/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/college_town/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/college_town/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/cu_ihouse/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/cu_ihouse/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/cu_ihouse/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/cu_ihouse/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/cu_ihouse/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/cu_ihouse/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/jpark_thammasart/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/jpark_thammasart/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/keystone/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/keystone/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/keystone/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/keystone/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/keystone/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/keystone/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pool_villa/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/pool_villa/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pool_villa/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/pool_villa/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/pool_villa/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/pool_villa/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_enter/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_enter/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_enter/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_enter/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_enter/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_enter/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_enter/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_enter/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_home/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_home/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_home/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_home/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_home/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_home/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/the_home/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/img/the_home/4.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,9 +189,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.title" />
-        <item itemvalue="Python.dormview" />
-        <item itemvalue="Python.user" />
         <item itemvalue="Python.admin" />
+        <item itemvalue="Python.user" />
+        <item itemvalue="Python.dormview" />
         <item itemvalue="Python.app_template" />
       </list>
     </recent_temporary>
@@ -202,7 +219,7 @@
       <workItem from="1608210329114" duration="2000" />
       <workItem from="1608212983676" duration="46351000" />
       <workItem from="1608325366376" duration="288000" />
-      <workItem from="1608325701354" duration="20249000" />
+      <workItem from="1608325701354" duration="44563000" />
     </task>
     <task id="LOCAL-00001" summary="UI: Title, App Template, Admin">
       <created>1608234303541</created>
@@ -239,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608319107693</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Adding detail to ui">
+      <created>1608379795778</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608379795778</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,20 +286,22 @@
     <MESSAGE value="UI: DormListPanel, User dorm list and scrolled bar" />
     <MESSAGE value="UI: Dormview and add to DetailAdd" />
     <MESSAGE value="Add button and list events" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add button and list events" />
+    <MESSAGE value="Adding detail to ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding detail to ui" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RentADorm$homepage.coverage" NAME="maichailaew Coverage Results" MODIFIED="1608226920513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RentADorm$template.coverage" NAME="app_template Coverage Results" MODIFIED="1608244324080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DormFinder$title.coverage" NAME="title Coverage Results" MODIFIED="1608119103195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DormFinder$template.coverage" NAME="template Coverage Results" MODIFIED="1608114154614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DormFinder$test.coverage" NAME="test Coverage Results" MODIFIED="1608115707473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DormFinder$homepage.coverage" NAME="homepage Coverage Results" MODIFIED="1608135386039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RentADorm$dormview.coverage" NAME="dormview Coverage Results" MODIFIED="1608354161379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RentADorm$user.coverage" NAME="user Coverage Results" MODIFIED="1608316165691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RentADorm$title.coverage" NAME="title Coverage Results" MODIFIED="1608379720288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DormFinder$main.coverage" NAME="main Coverage Results" MODIFIED="1608037161315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RentADorm$user.coverage" NAME="user Coverage Results" MODIFIED="1608403995030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RentADorm$admin.coverage" NAME="admin Coverage Results" MODIFIED="1608404946217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DormFinder$detail.coverage" NAME="detail Coverage Results" MODIFIED="1608119120752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DormFinder$test.coverage" NAME="test Coverage Results" MODIFIED="1608115707473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RentADorm$dormview.coverage" NAME="dormview Coverage Results" MODIFIED="1608354161379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RentADorm$title.coverage" NAME="title Coverage Results" MODIFIED="1608408763660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DormFinder$main.coverage" NAME="main Coverage Results" MODIFIED="1608037161315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RentADorm$test.coverage" NAME="admin Coverage Results" MODIFIED="1608316160603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

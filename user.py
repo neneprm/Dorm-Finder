@@ -3,9 +3,9 @@ from dormListPanel import DormListPanel
 import wx.lib.scrolledpanel
 import csv
 
-imgdir = 'img/'
+imgDir = 'img/'
 icon = '/icon.jpg'
-fulliconpath = ''
+fullIconPath = ''
 
 
 class User(wx.App):
@@ -46,30 +46,33 @@ class DataPanel(wx.Panel):
 
         self.area = ['           ------- Select your Area -------']
 
-        self.dorm_list = []
+        self.dorm_list = [] # list of dorm information
+        # read every row from csv file and store in a list
         with open('assets/dorm.csv', newline='') as f:
             reader = csv.reader(f)
             dormList = reader
             for row in dormList:
                 self.dorm_list.append(row)
 
-        tempset = set()
-        dormname = []
+        tempSet = set()
+        self.dormName = []
+        # match dorm name with directory
+        # change dorm name to all lower case
         for i in self.dorm_list:
-            tempset.add(i[1])
-            dormname.append(i[0].lower())
+            tempSet.add(i[1])
+            self.dormName.append(i[0].lower())
 
-        templist = []
-        iconpath = {}
-        for i in range(len(dormname)):
-            temp = dormname[i].replace(' ', '_')
-            templist.append(temp)
-            iconpath[self.dorm_list[i][0]] = temp
-        dormname = templist
-        # print(iconpath.get(self.dorm_list[0][0]))
+        tempList = []
+        self.iconPath = {} # dictionary store path of each icon
+        # replace all space key with _
+        for i in range(len(self.dormName)):
+            temp = self.dormName[i].replace(' ', '_')
+            tempList.append(temp)
+            self.iconPath[self.dorm_list[i][0]] = temp
+        self.dormName = tempList
 
-        for i in range(len(tempset)):
-            self.area.append(tempset.pop())
+        for i in range(len(tempSet)):
+            self.area.append(tempSet.pop())
 
         # Color, Font, and Style
         self.SetBackgroundColour('#f3bad6')
@@ -113,9 +116,9 @@ class DataPanel(wx.Panel):
 
         # Dorm list
         for i in range(len(self.dorm_list)):
-            full_iconpath = imgdir + iconpath.get(self.dorm_list[i][0]) + icon
-            # print(full_iconpath)
-            dorm_list = DormListPanel(scroll_panel, self.dorm_list[i], full_iconpath)
+            full_iconPath = imgDir + self.iconPath.get(self.dorm_list[i][0]) + icon
+            # print(full_icon path)
+            dorm_list = DormListPanel(scroll_panel, self.dorm_list[i], full_iconPath)
             scroll_vsizer.Add(dorm_list, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
 
         scroll_panel.SetSizer(scroll_vsizer)
@@ -132,7 +135,6 @@ class DataPanel(wx.Panel):
         # print(obj.GetString(item))
         if obj.GetString(item) == "":
             pass
-
 
     def logOutClicked(self, event):
         app = self.GetParent().GetParent()
