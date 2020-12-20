@@ -1,6 +1,9 @@
 from app_template import *
 import glob
+from wx.lib import buttons
 
+
+# User: View the dorm's details on a separated window
 
 class DormView(wx.App):
     def __init__(self, info):
@@ -28,13 +31,15 @@ class MyPanel(Info):
 
         detail = self.GetParent()
         self.index = 0
+
         # Dorm pics
-        # print(detail.info)
+        # Rename dorm name to folder name
         name = detail.info[0]
         name = name.lower().replace(' ', '_')
         # print(name)
-        self.pic_path = tuple(glob.glob('img/' + name + '/*[0-9].jpg')) # list of picture's directory
-        # print(pic_path)
+
+        # List of images directory
+        self.pic_path = tuple(glob.glob('img/' + name + '/*[0-9].jpg'))
 
         self.img = wx.Image(self.pic_path[self.index], wx.BITMAP_TYPE_ANY).ConvertToBitmap()
         self.bmp = wx.StaticBitmap(self, -1, self.img, (self.img.GetWidth(), self.img.GetHeight()))
@@ -55,7 +60,6 @@ class MyPanel(Info):
         self.pic_sizer.Add(self.pic_button_sizer)
 
         # Display information
-        # print(detail.info)
         self.name.WriteText(detail.info[0])
         self.area.WriteText(detail.info[1])
         self.size.WriteText(detail.info[2])
@@ -74,6 +78,8 @@ class MyPanel(Info):
         back_button.Bind(wx.EVT_BUTTON, self.backClicked)
         next_button.Bind(wx.EVT_BUTTON, self.nextClicked)
 
+    # EVT Functions
+    # Click to display next image or previous image
     def backClicked(self, event):
         self.img = wx.Image(self.pic_path[(self.index - 1) % len(self.pic_path)], wx.BITMAP_TYPE_ANY).ConvertToBitmap()
         self.bmp.SetBitmap(self.img)

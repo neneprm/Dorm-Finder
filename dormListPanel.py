@@ -3,31 +3,31 @@ import wx.lib.buttons as buttons
 import dormview
 
 
+# User: Display all dorms in a list
+
 class DormListPanel(wx.Panel):
     def __init__(self, parent, area_list, path):
         super().__init__(parent=parent)
-        self.SetBackgroundColour('#ea86b6')
-
+        # Keep dorm information in area list
         self.info = area_list
-        # print(self.info)
 
         # Color, Font, and Style
+        self.SetBackgroundColour('#ea86b6')
         name_font = wx.Font(20, wx.MODERN, wx.BOLD, wx.NORMAL)
         detail_font = wx.Font(14, wx.DEFAULT, wx.BOLD, wx.NORMAL)
-        # print(path)
 
         # Layout
         # Dorm Button
         self.hsizer = wx.BoxSizer(wx.HORIZONTAL)
         self.dorm_icon = wx.Bitmap(path)
         self.dorm_button = buttons.GenBitmapButton(self, bitmap=self.dorm_icon,
-                                               size=(self.dorm_icon.GetWidth(), self.dorm_icon.GetHeight()))
+                                                   size=(self.dorm_icon.GetWidth(), self.dorm_icon.GetHeight()))
         self.hsizer.Add(self.dorm_button)
         self.hsizer.AddSpacer(100)
         # EVT
         self.dorm_button.Bind(wx.EVT_BUTTON, self.dormClicked)
 
-        # Info
+        # Display information of each dorm from area list
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
         self.vsizer.AddSpacer(20)
         self.name = wx.StaticText(self, label=area_list[0], style=wx.ALIGN_LEFT)
@@ -70,7 +70,8 @@ class DormListPanel(wx.Panel):
 
         self.SetSizer(self.hsizer)
 
-    # EVT Functions
+    # EVT Function
+    # Get dorm information from dorm view
     def dormClicked(self, event):
         # print(self.info)
         app = dormview.DormView(self.info)

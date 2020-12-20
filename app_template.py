@@ -1,7 +1,10 @@
 import wx
-import wx.lib.buttons as buttons
 
 
+# Application templates
+
+
+# Default template (Empty window with app title)
 class Template(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
@@ -30,9 +33,12 @@ class TitlePanel(wx.Panel):
         self.SetSizer(self.title_sizer)
 
 
+# Dorm information display template
 class Info(wx.Panel):
     def __init__(self, parent):
         super().__init__(parent=parent)
+
+        # Color, Font, and Style
         self.box_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.vsizer = wx.BoxSizer(wx.VERTICAL)
         self.col1_sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -47,10 +53,11 @@ class Info(wx.Panel):
         self.vsizer.Add(self.button_sizer)
         self.vsizer.AddSpacer(10)
 
-        # Info
+        # Information
         self.col1_sizer.AddSpacer(40)
 
-        info = wx.StaticText(self, label='Name\n\nArea\n\nSize (sq.m.)\n\nPrice (Baht/month)\n\nStatus\n\nContact', style=wx.ALIGN_RIGHT)
+        info = wx.StaticText(self, label='Name\n\nArea\n\nSize (sq.m.)\n\nPrice (Baht/month)\n\nStatus\n\nContact',
+                             style=wx.ALIGN_RIGHT)
         info.SetFont(info_font)
         self.col1_sizer.Add(info, wx.ALL)
         self.col1_sizer.AddSpacer(15)
@@ -59,7 +66,6 @@ class Info(wx.Panel):
 
         self.name = wx.TextCtrl(self, size=(180, 22))
         self.name.SetFont(input_font)
-        # name.SetEditable(False)
         col2_sizer.Add(self.name, wx.ALL)
         col2_sizer.AddSpacer(14)
 
@@ -89,23 +95,13 @@ class Info(wx.Panel):
 
         self.col1_sizer.Add(col2_sizer)
 
-        # Pic
+        # Image
         self.col1_sizer.AddSpacer(30)
-
         self.pic_sizer = wx.BoxSizer(wx.VERTICAL)
-
-        # insert picture over hereeeeeeeeeee
-        # test test test hellowwwww
-        # back_icon2 = wx.Bitmap("icons/back.png")
-        # back_button2 = buttons.GenBitmapButton(self, bitmap=back_icon2,
-        #                                       size=(back_icon2.GetWidth(), back_icon2.GetHeight()))
-        # pic_sizer.Add(back_button2)
 
         # Back and Next Button
         self.pic_button_sizer = wx.BoxSizer(wx.HORIZONTAL)
         self.pic_button_sizer.AddSpacer(350)
-
-        # self.pic_sizer.Add(self.pic_button_sizer)
         self.col1_sizer.Add(self.pic_sizer)
 
         # Initialize

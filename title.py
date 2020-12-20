@@ -3,6 +3,8 @@ import admin
 import user
 
 
+# First Page of the program (Log In page)
+
 class Title(wx.App):
     def __init__(self):
         super().__init__()
@@ -71,13 +73,13 @@ class MainPanel(wx.Panel):
         # EVT
         self.guest_button.Bind(wx.EVT_BUTTON, self.guestClicked)
 
-        self.vsizer.Add(self.button_sizer, 0, wx.ALL)
-
         # Initialize
+        self.vsizer.Add(self.button_sizer, 0, wx.ALL)
         self.vsizer.AddSpacer(180)
         self.SetSizer(self.vsizer)
 
     # EVT Functions
+    # Log In as Admin
     def adminClicked(self, event):
         frame = self.GetParent()
         app = frame.GetParent()
@@ -86,6 +88,7 @@ class MainPanel(wx.Panel):
         admin_app = admin.Admin()
         admin_app.MainLoop()
 
+    # Log In as Guest
     def guestClicked(self, event):
         frame = self.GetParent()
         app = frame.GetParent()
